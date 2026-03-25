@@ -13,13 +13,8 @@ void func6() {
 
 void func5() {
     std::cout << "func5: start" << std::endl;
-    try {
-        func6();
-    } catch (int) {
-        throw;
-    } catch (double) {
-        throw;
-    }
+    func6();
+    std::cout << "func5: end" << std::endl;
 }
 
 void func4() {
@@ -28,9 +23,7 @@ void func4() {
         func5();
     } catch (int e) {
         std::cout << "func4: caught int" << std::endl;
-    } catch (double) {
-        throw;
-    }
+    } 
     std::cout << "func4: end" << std::endl;
 }
 
