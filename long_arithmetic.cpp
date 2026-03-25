@@ -26,6 +26,34 @@ LongNumber add(const LongNumber& a, const LongNumber& b) {
     return result;
 }
 
+// Вычитание двух длинных чисел (предполагается, что a >= b)
+LongNumber subtract(const LongNumber& a, const LongNumber& b) {
+    LongNumber result;
+    int borrow = 0;
+    
+    for (size_t i = 0; i < a.size(); i++) {
+        int digit_a = a[i];
+        int digit_b = (i < b.size()) ? b[i] : 0;
+        int diff = digit_a - digit_b - borrow;
+        
+        if (diff < 0) {
+            diff += 10;
+            borrow = 1;
+        } else {
+            borrow = 0;
+        }
+        
+        result.push_back(diff);
+    }
+    
+    // Удаляем ведущие нули
+    while (result.size() > 1 && result.back() == 0) {
+        result.pop_back();
+    }
+    
+    return result;
+}
+
 // Умножение на однозначное число (0-9)
 LongNumber multiply_by_digit(const LongNumber& a, int digit) {
     LongNumber result;

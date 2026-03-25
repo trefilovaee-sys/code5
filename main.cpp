@@ -30,26 +30,10 @@ int main() {
     std::cout << "\nВведите a и b для 2^a - 2^b (a>b>64): ";
     std::cin >> a >> b;
     if (a > 64 && b > 64 && a > b) {
-        auto pow_a = power_of_two(a);
-        auto pow_b = power_of_two(b);
-        LongNumber result;
-        int borrow = 0;
-        for (size_t i = 0; i < pow_a.size(); i++) {
-            int digit_a = pow_a[i];
-            int digit_b = (i < pow_b.size()) ? pow_b[i] : 0;
-            int diff = digit_a - digit_b - borrow;
-            if (diff < 0) {
-                diff += 10;
-                borrow = 1;
-            } else {
-                borrow = 0;
-            }
-            result.push_back(diff);
-        }
-        while (result.size() > 1 && result.back() == 0) {
-            result.pop_back();
-        }
-        std::cout << "2^" << a << " - 2^" << b << " = " << to_string(result) << std::endl;
+        LongNumber diff = subtract(power_of_two(a), power_of_two(b));
+        std::cout << "2^" << a << " - 2^" << b << " = " << to_string(diff) << std::endl;
+    } else {
+        std::cout << "Условия: a > b > 64!" << std::endl;
     }
     std::cout << "\nВведите n для числа Фибоначчи (>100): ";
     std::cin >> n;

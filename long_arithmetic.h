@@ -8,6 +8,7 @@ using LongNumber = std::vector<int>;
 
 // Прототипы всех функций длинной арифметики
 LongNumber add(const LongNumber& a, const LongNumber& b);
+LongNumber subtract(const LongNumber& a, const LongNumber& b);
 LongNumber multiply_by_digit(const LongNumber& a, int digit);
 LongNumber factorial(int n);
 LongNumber power_of_two(int n);
